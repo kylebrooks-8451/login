@@ -167,6 +167,7 @@ async function executeAzCliCommand(
     args: any = []) {
     
     execOptions.silent = !!silent;
+    core.debug(`"Executing az cli command: ${azPath} ${args}"`)
     try {
         await exec.exec(`"${azPath}" ${command}`, args,  execOptions); 
     }
