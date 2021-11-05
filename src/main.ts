@@ -118,6 +118,8 @@ async function main() {
                 "-p", servicePrincipalKey,
                 "--tenant", tenantId
             ];
+            console.log(`az login "${args}"`);
+            core.debug(`az login "${args}"`);
             await executeAzCliCommand(`login`, true, {}, args);
             args = [
                 "--subscription",
@@ -167,7 +169,7 @@ async function executeAzCliCommand(
     args: any = []) {
     
     execOptions.silent = !!silent;
-    core.debug(`"Executing az cli command: ${azPath} ${args}"`)
+    core.debug(`"Executing az cli command: ${azPath} ${args}"`);
     try {
         await exec.exec(`"${azPath}" ${command}`, args,  execOptions); 
     }
